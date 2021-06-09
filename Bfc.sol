@@ -1011,14 +1011,18 @@ contract Bfc is Context, IERC20, Ownable {
         
         _previousTaxFee = _taxFee;
         _previousLiquidityFee = _liquidityFee;
-        
+        _previousDestroyFee = _destroyFee;
+
         _taxFee = 0;
         _liquidityFee = 0;
+        _destroyFee = 0;
+
     }
     
     function restoreAllFee() private {
         _taxFee = _previousTaxFee;
         _liquidityFee = _previousLiquidityFee;
+        _destroyFee = _previousDestroyFee;
     }
     
     function isExcludedFromFee(address account) public view returns(bool) {
