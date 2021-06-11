@@ -764,7 +764,7 @@ contract Bfc is Context, IERC20, Ownable {
         _rOwned[_msgSender()] = _rTotal;
 
         //_tOwned[autoDestroy] = 0;
-
+        //bsc上面的PancakeRouter02的地址
         IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
 
          // Create a uniswap pair for this new token
