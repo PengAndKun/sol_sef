@@ -740,7 +740,7 @@ contract BFC is Context, IERC20, Ownable {
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
     //max tranfs amount
-    uint256 public _maxTxAmount = 5*10**8 * 10**6 * 10**9;
+    uint256 public _maxTxAmount = 10*10**6 * 10**6 * 10**9;
     uint256 private numTokensSellToAddToLiquidity = 500000 * 10**6 * 10**9;
    
     //address    private  autoDestroy = 0x00000000000000000000001;
@@ -1067,7 +1067,7 @@ contract BFC is Context, IERC20, Ownable {
         ) {
             contractTokenBalance = numTokensSellToAddToLiquidity;
             //add liquidity
-            //swapAndLiquify(contractTokenBalance);
+            swapAndLiquify(contractTokenBalance);
         }
         
         //indicates if fee should be deducted from transfer
