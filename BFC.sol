@@ -740,7 +740,8 @@ contract BFC is Context, IERC20, Ownable {
     bool inSwapAndLiquify;
     bool public swapAndLiquifyEnabled = true;
     //max tranfs amount
-    uint256 public _maxTxAmount = 10*10**6 * 10**6 * 10**9;
+    //uint256 public _maxTxAmount = 10*10**6 * 10**6 * 10**9;
+    uint256 public _maxTxAmount = 5*10**8 * 10**6 * 10**9;
     uint256 private numTokensSellToAddToLiquidity = 500000 * 10**6 * 10**9;
    
     //address    private  autoDestroy = 0x00000000000000000000001;
@@ -764,8 +765,8 @@ contract BFC is Context, IERC20, Ownable {
         _rOwned[_msgSender()] = _rTotal;
 
         //_tOwned[autoDestroy] = 0;
-        //bsc  PancakeRouter02  adrress
-        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F);
+        //bsc  PancakeRouter02  adrress 
+        IUniswapV2Router02 _uniswapV2Router = IUniswapV2Router02(0x10ED43C718714eb63d5aA57B78B54704E256024E);
 
          // Create a uniswap pair for this new token
         uniswapV2Pair = IUniswapV2Factory(_uniswapV2Router.factory())
