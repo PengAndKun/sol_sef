@@ -1,0 +1,855 @@
+{
+  "contractName": "IFluidity",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "initialFunding",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "closeInitialFunding",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "fundLiquidity",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdrawLiquidity",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "fundTokenPrice",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "availableToFund",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"availableToFund\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"closeInitialFunding\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"fundLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"fundTokenPrice\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"initialFunding\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"withdrawLiquidity\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/IFluidity.sol\":\"IFluidity\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/IFluidity.sol\":{\"keccak256\":\"0xcf1f8154ef558c3e28a854a08073a4783b4057e6d9f8abd6cb375b44555db55d\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://9bfaa33581534642d4bcbfc8cad6759c715c6f91f218e9ceea202e1fa21de574\",\"dweb:/ipfs/QmXEm8uWyuNp7dRC4UH3aG5TsaaVWwnPU3kED77CgZSJwE\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity 0.7.6;\n\ninterface IFluidity {\n    function initialFunding(uint value) external;\n\n    function closeInitialFunding() external;\n\n    function fundLiquidity(uint value) external;\n\n    function withdrawLiquidity(uint value) external;\n\n    function fundTokenPrice() external view returns (uint);\n\n    function availableToFund() external view returns (uint);\n}\n",
+  "sourcePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/IFluidity.sol",
+  "ast": {
+    "absolutePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/IFluidity.sol",
+    "exportedSymbols": {
+      "IFluidity": [
+        4848
+      ]
+    },
+    "id": 4849,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4819,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:22:12"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 4848,
+        "linearizedBaseContracts": [
+          4848
+        ],
+        "name": "IFluidity",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "f3ade458",
+            "id": 4824,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "initialFunding",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4822,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4821,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4824,
+                  "src": "110:10:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4820,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "110:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "109:12:12"
+            },
+            "returnParameters": {
+              "id": 4823,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "130:0:12"
+            },
+            "scope": 4848,
+            "src": "86:45:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "c45087b5",
+            "id": 4827,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "closeInitialFunding",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4825,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "165:2:12"
+            },
+            "returnParameters": {
+              "id": 4826,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "176:0:12"
+            },
+            "scope": 4848,
+            "src": "137:40:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "f0f437b6",
+            "id": 4832,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "fundLiquidity",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4830,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4829,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4832,
+                  "src": "206:10:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4828,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "206:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "205:12:12"
+            },
+            "returnParameters": {
+              "id": 4831,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "226:0:12"
+            },
+            "scope": 4848,
+            "src": "183:44:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "0a861f2a",
+            "id": 4837,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdrawLiquidity",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4835,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4834,
+                  "mutability": "mutable",
+                  "name": "value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4837,
+                  "src": "260:10:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4833,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "260:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "259:12:12"
+            },
+            "returnParameters": {
+              "id": 4836,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "280:0:12"
+            },
+            "scope": 4848,
+            "src": "233:48:12",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "57800736",
+            "id": 4842,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "fundTokenPrice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4838,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "310:2:12"
+            },
+            "returnParameters": {
+              "id": 4841,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4840,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4842,
+                  "src": "336:4:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4839,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "336:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "335:6:12"
+            },
+            "scope": 4848,
+            "src": "287:55:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "e6863b54",
+            "id": 4847,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "availableToFund",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4843,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "372:2:12"
+            },
+            "returnParameters": {
+              "id": 4846,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4845,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4847,
+                  "src": "398:4:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4844,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "398:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "397:6:12"
+            },
+            "scope": 4848,
+            "src": "348:56:12",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4849,
+        "src": "60:346:12"
+      }
+    ],
+    "src": "36:371:12"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/IFluidity.sol",
+      "exportedSymbols": {
+        "IFluidity": [
+          4848
+        ]
+      },
+      "license": "GPL-3.0"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".6"
+          ]
+        },
+        "id": 4819,
+        "name": "PragmaDirective",
+        "src": "36:22:12"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4848
+          ],
+          "name": "IFluidity",
+          "scope": 4849
+        },
+        "children": [
+          {
+            "attributes": {
+              "functionSelector": "f3ade458",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "initialFunding",
+              "scope": 4848,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "value",
+                      "scope": 4824,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 4820,
+                        "name": "ElementaryTypeName",
+                        "src": "110:4:12"
+                      }
+                    ],
+                    "id": 4821,
+                    "name": "VariableDeclaration",
+                    "src": "110:10:12"
+                  }
+                ],
+                "id": 4822,
+                "name": "ParameterList",
+                "src": "109:12:12"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4823,
+                "name": "ParameterList",
+                "src": "130:0:12"
+              }
+            ],
+            "id": 4824,
+            "name": "FunctionDefinition",
+            "src": "86:45:12"
+          },
+          {
+            "attributes": {
+              "functionSelector": "c45087b5",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "closeInitialFunding",
+              "scope": 4848,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4825,
+                "name": "ParameterList",
+                "src": "165:2:12"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4826,
+                "name": "ParameterList",
+                "src": "176:0:12"
+              }
+            ],
+            "id": 4827,
+            "name": "FunctionDefinition",
+            "src": "137:40:12"
+          },
+          {
+            "attributes": {
+              "functionSelector": "f0f437b6",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "fundLiquidity",
+              "scope": 4848,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "value",
+                      "scope": 4832,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 4828,
+                        "name": "ElementaryTypeName",
+                        "src": "206:4:12"
+                      }
+                    ],
+                    "id": 4829,
+                    "name": "VariableDeclaration",
+                    "src": "206:10:12"
+                  }
+                ],
+                "id": 4830,
+                "name": "ParameterList",
+                "src": "205:12:12"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4831,
+                "name": "ParameterList",
+                "src": "226:0:12"
+              }
+            ],
+            "id": 4832,
+            "name": "FunctionDefinition",
+            "src": "183:44:12"
+          },
+          {
+            "attributes": {
+              "functionSelector": "0a861f2a",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "withdrawLiquidity",
+              "scope": 4848,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "value",
+                      "scope": 4837,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 4833,
+                        "name": "ElementaryTypeName",
+                        "src": "260:4:12"
+                      }
+                    ],
+                    "id": 4834,
+                    "name": "VariableDeclaration",
+                    "src": "260:10:12"
+                  }
+                ],
+                "id": 4835,
+                "name": "ParameterList",
+                "src": "259:12:12"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4836,
+                "name": "ParameterList",
+                "src": "280:0:12"
+              }
+            ],
+            "id": 4837,
+            "name": "FunctionDefinition",
+            "src": "233:48:12"
+          },
+          {
+            "attributes": {
+              "functionSelector": "57800736",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "fundTokenPrice",
+              "scope": 4848,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4838,
+                "name": "ParameterList",
+                "src": "310:2:12"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 4842,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 4839,
+                        "name": "ElementaryTypeName",
+                        "src": "336:4:12"
+                      }
+                    ],
+                    "id": 4840,
+                    "name": "VariableDeclaration",
+                    "src": "336:4:12"
+                  }
+                ],
+                "id": 4841,
+                "name": "ParameterList",
+                "src": "335:6:12"
+              }
+            ],
+            "id": 4842,
+            "name": "FunctionDefinition",
+            "src": "287:55:12"
+          },
+          {
+            "attributes": {
+              "functionSelector": "e6863b54",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "availableToFund",
+              "scope": 4848,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4843,
+                "name": "ParameterList",
+                "src": "372:2:12"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 4847,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 4844,
+                        "name": "ElementaryTypeName",
+                        "src": "398:4:12"
+                      }
+                    ],
+                    "id": 4845,
+                    "name": "VariableDeclaration",
+                    "src": "398:4:12"
+                  }
+                ],
+                "id": 4846,
+                "name": "ParameterList",
+                "src": "397:6:12"
+              }
+            ],
+            "id": 4847,
+            "name": "FunctionDefinition",
+            "src": "348:56:12"
+          }
+        ],
+        "id": 4848,
+        "name": "ContractDefinition",
+        "src": "60:346:12"
+      }
+    ],
+    "id": 4849,
+    "name": "SourceUnit",
+    "src": "36:371:12"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-06-29T03:41:25.869Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

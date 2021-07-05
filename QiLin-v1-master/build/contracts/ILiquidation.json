@@ -1,0 +1,758 @@
+{
+  "contractName": "ILiquidation",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "positionId",
+          "type": "uint32"
+        }
+      ],
+      "name": "liquidate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "positionId",
+          "type": "uint32"
+        }
+      ],
+      "name": "bankruptedLiquidate",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "positionId",
+          "type": "uint32"
+        }
+      ],
+      "name": "alertLiquidation",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint32",
+          "name": "positionId",
+          "type": "uint32"
+        }
+      ],
+      "name": "alertBankruptedLiquidation",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"positionId\",\"type\":\"uint32\"}],\"name\":\"alertBankruptedLiquidation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"positionId\",\"type\":\"uint32\"}],\"name\":\"alertLiquidation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"positionId\",\"type\":\"uint32\"}],\"name\":\"bankruptedLiquidate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"positionId\",\"type\":\"uint32\"}],\"name\":\"liquidate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/ILiquidation.sol\":\"ILiquidation\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/ILiquidation.sol\":{\"keccak256\":\"0x7d9123864c786bd3e5d0d67a9a7990e42fcaacf98bb8a0a07655bdb5dbbda1bc\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://6bd8a1e16f98a7a3577225a16a87f0efb9c9113fed1bddd69dace6c8e5a93911\",\"dweb:/ipfs/QmTEfNKaZfssz2i7qwxHphUCGkyHKsQy4Db3rVDVrSNmm4\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity 0.7.6;\n\ninterface ILiquidation {\n    function liquidate(uint32 positionId) external;\n\n    function bankruptedLiquidate(uint32 positionId) external;\n\n    function alertLiquidation(uint32 positionId) external view returns (bool);\n\n    function alertBankruptedLiquidation(uint32 positionId) external view returns (bool);\n}\n",
+  "sourcePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/ILiquidation.sol",
+  "ast": {
+    "absolutePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/ILiquidation.sol",
+    "exportedSymbols": {
+      "ILiquidation": [
+        4892
+      ]
+    },
+    "id": 4893,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4867,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:22:14"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 4892,
+        "linearizedBaseContracts": [
+          4892
+        ],
+        "name": "ILiquidation",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "5b5b121d",
+            "id": 4872,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "liquidate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4870,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4869,
+                  "mutability": "mutable",
+                  "name": "positionId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4872,
+                  "src": "108:17:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 4868,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "108:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "107:19:14"
+            },
+            "returnParameters": {
+              "id": 4871,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "135:0:14"
+            },
+            "scope": 4892,
+            "src": "89:47:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "6f2cfa98",
+            "id": 4877,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bankruptedLiquidate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4875,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4874,
+                  "mutability": "mutable",
+                  "name": "positionId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4877,
+                  "src": "171:17:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 4873,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "171:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "170:19:14"
+            },
+            "returnParameters": {
+              "id": 4876,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "198:0:14"
+            },
+            "scope": 4892,
+            "src": "142:57:14",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "18fe35c7",
+            "id": 4884,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "alertLiquidation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4880,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4879,
+                  "mutability": "mutable",
+                  "name": "positionId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4884,
+                  "src": "231:17:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 4878,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "231:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "230:19:14"
+            },
+            "returnParameters": {
+              "id": 4883,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4882,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4884,
+                  "src": "273:4:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4881,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:4:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "272:6:14"
+            },
+            "scope": 4892,
+            "src": "205:74:14",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "753c2825",
+            "id": 4891,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "alertBankruptedLiquidation",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4887,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4886,
+                  "mutability": "mutable",
+                  "name": "positionId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4891,
+                  "src": "321:17:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint32",
+                    "typeString": "uint32"
+                  },
+                  "typeName": {
+                    "id": 4885,
+                    "name": "uint32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "321:6:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint32",
+                      "typeString": "uint32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "320:19:14"
+            },
+            "returnParameters": {
+              "id": 4890,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4889,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4891,
+                  "src": "363:4:14",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4888,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "363:4:14",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "362:6:14"
+            },
+            "scope": 4892,
+            "src": "285:84:14",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4893,
+        "src": "60:311:14"
+      }
+    ],
+    "src": "36:336:14"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/interfaces/ILiquidation.sol",
+      "exportedSymbols": {
+        "ILiquidation": [
+          4892
+        ]
+      },
+      "license": "GPL-3.0"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".6"
+          ]
+        },
+        "id": 4867,
+        "name": "PragmaDirective",
+        "src": "36:22:14"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4892
+          ],
+          "name": "ILiquidation",
+          "scope": 4893
+        },
+        "children": [
+          {
+            "attributes": {
+              "functionSelector": "5b5b121d",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "liquidate",
+              "scope": 4892,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "positionId",
+                      "scope": 4872,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 4868,
+                        "name": "ElementaryTypeName",
+                        "src": "108:6:14"
+                      }
+                    ],
+                    "id": 4869,
+                    "name": "VariableDeclaration",
+                    "src": "108:17:14"
+                  }
+                ],
+                "id": 4870,
+                "name": "ParameterList",
+                "src": "107:19:14"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4871,
+                "name": "ParameterList",
+                "src": "135:0:14"
+              }
+            ],
+            "id": 4872,
+            "name": "FunctionDefinition",
+            "src": "89:47:14"
+          },
+          {
+            "attributes": {
+              "functionSelector": "6f2cfa98",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "bankruptedLiquidate",
+              "scope": 4892,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "positionId",
+                      "scope": 4877,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 4873,
+                        "name": "ElementaryTypeName",
+                        "src": "171:6:14"
+                      }
+                    ],
+                    "id": 4874,
+                    "name": "VariableDeclaration",
+                    "src": "171:17:14"
+                  }
+                ],
+                "id": 4875,
+                "name": "ParameterList",
+                "src": "170:19:14"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4876,
+                "name": "ParameterList",
+                "src": "198:0:14"
+              }
+            ],
+            "id": 4877,
+            "name": "FunctionDefinition",
+            "src": "142:57:14"
+          },
+          {
+            "attributes": {
+              "functionSelector": "18fe35c7",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "alertLiquidation",
+              "scope": 4892,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "positionId",
+                      "scope": 4884,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 4878,
+                        "name": "ElementaryTypeName",
+                        "src": "231:6:14"
+                      }
+                    ],
+                    "id": 4879,
+                    "name": "VariableDeclaration",
+                    "src": "231:17:14"
+                  }
+                ],
+                "id": 4880,
+                "name": "ParameterList",
+                "src": "230:19:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 4884,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 4881,
+                        "name": "ElementaryTypeName",
+                        "src": "273:4:14"
+                      }
+                    ],
+                    "id": 4882,
+                    "name": "VariableDeclaration",
+                    "src": "273:4:14"
+                  }
+                ],
+                "id": 4883,
+                "name": "ParameterList",
+                "src": "272:6:14"
+              }
+            ],
+            "id": 4884,
+            "name": "FunctionDefinition",
+            "src": "205:74:14"
+          },
+          {
+            "attributes": {
+              "functionSelector": "753c2825",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "alertBankruptedLiquidation",
+              "scope": 4892,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "positionId",
+                      "scope": 4891,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint32",
+                          "type": "uint32"
+                        },
+                        "id": 4885,
+                        "name": "ElementaryTypeName",
+                        "src": "321:6:14"
+                      }
+                    ],
+                    "id": 4886,
+                    "name": "VariableDeclaration",
+                    "src": "321:17:14"
+                  }
+                ],
+                "id": 4887,
+                "name": "ParameterList",
+                "src": "320:19:14"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 4891,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 4888,
+                        "name": "ElementaryTypeName",
+                        "src": "363:4:14"
+                      }
+                    ],
+                    "id": 4889,
+                    "name": "VariableDeclaration",
+                    "src": "363:4:14"
+                  }
+                ],
+                "id": 4890,
+                "name": "ParameterList",
+                "src": "362:6:14"
+              }
+            ],
+            "id": 4891,
+            "name": "FunctionDefinition",
+            "src": "285:84:14"
+          }
+        ],
+        "id": 4892,
+        "name": "ContractDefinition",
+        "src": "60:311:14"
+      }
+    ],
+    "id": 4893,
+    "name": "SourceUnit",
+    "src": "36:336:14"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-06-29T03:41:25.870Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

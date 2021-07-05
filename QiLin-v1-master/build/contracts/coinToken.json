@@ -1,0 +1,1761 @@
+{
+  "contractName": "coinToken",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "previousAdminRole",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "newAdminRole",
+          "type": "bytes32"
+        }
+      ],
+      "name": "RoleAdminChanged",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleGranted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "RoleRevoked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "CONTROLER_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "DEFAULT_ADMIN_ROLE",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "addControler",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        }
+      ],
+      "name": "allowance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "decimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "subtractedValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "decreaseAllowance",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleAdmin",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "getRoleMember",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getRoleMemberCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "grantRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "hasRole",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "spender",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "addedValue",
+          "type": "uint256"
+        }
+      ],
+      "name": "increaseAllowance",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "isControler",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "name",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "removeControler",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "renounceRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceSigner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "role",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "revokeRole",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "symbol",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transfer",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"CONTROLER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"addControler\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subtractedValue\",\"type\":\"uint256\"}],\"name\":\"decreaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getRoleMember\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleMemberCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"addedValue\",\"type\":\"uint256\"}],\"name\":\"increaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isControler\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"removeControler\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceSigner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"allowance(address,address)\":{\"details\":\"See {IERC20-allowance}.\"},\"approve(address,uint256)\":{\"details\":\"See {IERC20-approve}. Requirements: - `spender` cannot be the zero address.\"},\"balanceOf(address)\":{\"details\":\"See {IERC20-balanceOf}.\"},\"decimals()\":{\"details\":\"Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5,05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. This is the value {ERC20} uses, unless {_setupDecimals} is called. NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}.\"},\"decreaseAllowance(address,uint256)\":{\"details\":\"Atomically decreases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address. - `spender` must have allowance for the caller of at least `subtractedValue`.\"},\"getRoleAdmin(bytes32)\":{\"details\":\"Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.\"},\"getRoleMember(bytes32,uint256)\":{\"details\":\"Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information.\"},\"getRoleMemberCount(bytes32)\":{\"details\":\"Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role.\"},\"grantRole(bytes32,address)\":{\"details\":\"Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role.\"},\"hasRole(bytes32,address)\":{\"details\":\"Returns `true` if `account` has been granted `role`.\"},\"increaseAllowance(address,uint256)\":{\"details\":\"Atomically increases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address.\"},\"name()\":{\"details\":\"Returns the name of the token.\"},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"renounceRole(bytes32,address)\":{\"details\":\"Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`.\"},\"revokeRole(bytes32,address)\":{\"details\":\"Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role.\"},\"symbol()\":{\"details\":\"Returns the symbol of the token, usually a shorter version of the name.\"},\"totalSupply()\":{\"details\":\"See {IERC20-totalSupply}.\"},\"transfer(address,uint256)\":{\"details\":\"See {IERC20-transfer}. Requirements: - `recipient` cannot be the zero address. - the caller must have a balance of at least `amount`.\"},\"transferFrom(address,address,uint256)\":{\"details\":\"See {IERC20-transferFrom}. Emits an {Approval} event indicating the updated allowance. This is not required by the EIP. See the note at the beginning of {ERC20}. Requirements: - `sender` and `recipient` cannot be the zero address. - `sender` must have a balance of at least `amount`. - the caller must have allowance for ``sender``'s tokens of at least `amount`.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/mocks/tokenization/coinToken.sol\":\"coinToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/mocks/tokenization/coinToken.sol\":{\"keccak256\":\"0x3985e5059a7e455f7d4733bf5b5ac142d309c37d4f1103e2ebfbe4dd9ca39bc2\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://710cd21cd35480bc302b4dc2d58544045fe4442701ac64ebce1367ebea70c27f\",\"dweb:/ipfs/QmNasPKuGCE63hZiLxmHFAkGroH1BZfjfpUMhp3zc1rzDg\"]},\"/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/utils/ControlerRole.sol\":{\"keccak256\":\"0x38296ffd85a60b21e68bcc3555da3e9981c9de41aea74d761431a06bf51872f4\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://54b91f29849918b88377bfc50799f5f2ba46d6da47a5ccf7d93ef378720fe66b\",\"dweb:/ipfs/QmfBBFdMuNx8bDy3szcPc4QbgUBmcb5MDvsH28xi5hQPEf\"]},\"@openzeppelin/contracts/access/AccessControl.sol\":{\"keccak256\":\"0x4fc155a2f7837603d69a13cfa481eb5e7f5e02cb77e2ec9edbac30986db37988\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0855147e38b5e36288a8df73b8da49132f14ec7abb19041b0c98872263643aaa\",\"dweb:/ipfs/QmSrSysyFUYQq7hbJaJXG7EyZW6ezDBzEJx3SABp6eiJSS\"]},\"@openzeppelin/contracts/access/Ownable.sol\":{\"keccak256\":\"0x15e2d5bd4c28a88548074c54d220e8086f638a71ed07e6b3ba5a70066fcf458d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://90faf5851c02f9bd42c5bfb54d4f0421a2612f50ab80b2c4fa24fa3792071cc2\",\"dweb:/ipfs/QmRGM4F2PcGVF85aTfaA9YBhCHHDqrMhRjyp6fGeBTtirb\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0xcc78a17dd88fa5a2edc60c8489e2f405c0913b377216a5b26b35656b2d0dab52\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://526dc85e1f9b9b45830e202568d267d93dde7a4fcccf4ad7798dadcd92304d3c\",\"dweb:/ipfs/QmaoXMB972J3cSDLtBq3xBo4jLwqD2uzXTwujtSPqkYVhR\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xca0c2396dbeb3503b51abf4248ebf77a1461edad513c01529df51850a012bee3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://991b44ff44e0496e8554a90f4c0512c28faed45104d40430019f3c67ea67740e\",\"dweb:/ipfs/Qmc3nRapVbcctELoZS5qe17zLkFB3bETBfwzCTMF1CSuGE\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x28911e614500ae7c607a432a709d35da25f3bc5ddc8bd12b278b66358070c0ea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://256c8c8af5eb072bc473226ab2b2187149b8fc04f5f4a4820db22527f5ce8e3c\",\"dweb:/ipfs/QmRvi5BhnL7Rxf85KrJhwM6RRhukm4tzoctRdgQEheNyiN\"]},\"@openzeppelin/contracts/utils/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]},\"@openzeppelin/contracts/utils/EnumerableSet.sol\":{\"keccak256\":\"0x1562cd9922fbf739edfb979f506809e2743789cbde3177515542161c3d04b164\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4580d57781513d98870d9738c7d39094336e0a70cdb90d68dad549c6ced466ec\",\"dweb:/ipfs/Qmf9YZzzRFuvMnav9dgmeRUpdYMMECiZX8w25sHWVbA18V\"]}},\"version\":1}",
+  "bytecode": "0x60806040523480156200001157600080fd5b5060408051808201825260048082526321a7a4a760e11b602080840182815285518087019096529285528401528151919291620000519160039162000270565b5080516200006790600490602084019062000270565b50506005805460ff1916601217905550600062000083620000f6565b60058054610100600160a81b0319166101006001600160a01b03841690810291909117909155604051919250906000907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a350620000f0336a52b7d2dcc80cd2e4000000620000fa565b6200031c565b3390565b6001600160a01b03821662000156576040805162461bcd60e51b815260206004820152601f60248201527f45524332303a206d696e7420746f20746865207a65726f206164647265737300604482015290519081900360640190fd5b620001646000838362000209565b62000180816002546200020e60201b62000dba1790919060201c565b6002556001600160a01b03821660009081526020818152604090912054620001b391839062000dba6200020e821b17901c565b6001600160a01b0383166000818152602081815260408083209490945583518581529351929391927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9281900390910190a35050565b505050565b60008282018381101562000269576040805162461bcd60e51b815260206004820152601b60248201527f536166654d6174683a206164646974696f6e206f766572666c6f770000000000604482015290519081900360640190fd5b9392505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282620002a85760008555620002f3565b82601f10620002c357805160ff1916838001178555620002f3565b82800160010185558215620002f3579182015b82811115620002f3578251825591602001919060010190620002d6565b506200030192915062000305565b5090565b5b8082111562000301576000815560010162000306565b611726806200032c6000396000f3fe608060405234801561001057600080fd5b50600436106101c45760003560e01c80638f0858fb116100f9578063a9059cbb11610097578063dd62ed3e11610071578063dd62ed3e1461055a578063e5c8b03d14610588578063f2aa7b0b14610590578063f2fde38b146105b6576101c4565b8063a9059cbb146104e5578063ca15c87314610511578063d547741f1461052e576101c4565b806395d89b41116100d357806395d89b411461048c578063a0712d6814610494578063a217fddf146104b1578063a457c2d7146104b9576101c4565b80638f0858fb146104355780639010d07c1461043d57806391d1485414610460576101c4565b8063313ce56711610166578063395093511161014057806339509351146103b757806370a08231146103e3578063715018a6146104095780638da5cb5b14610411576101c4565b8063313ce5671461034757806333f1b0851461036557806336568abe1461038b576101c4565b806318160ddd116101a257806318160ddd146102ac57806323b872dd146102c6578063248a9ca3146102fc5780632f2ff15d14610319576101c4565b806306fdde03146101c9578063095ea7b314610246578063132b984714610286575b600080fd5b6101d16105dc565b6040805160208082528351818301528351919283929083019185019080838360005b8381101561020b5781810151838201526020016101f3565b50505050905090810190601f1680156102385780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6102726004803603604081101561025c57600080fd5b506001600160a01b038135169060200135610672565b604080519115158252519081900360200190f35b6102726004803603602081101561029c57600080fd5b50356001600160a01b0316610690565b6102b46106d2565b60408051918252519081900360200190f35b610272600480360360608110156102dc57600080fd5b506001600160a01b038135811691602081013590911690604001356106d8565b6102b46004803603602081101561031257600080fd5b503561075f565b6103456004803603604081101561032f57600080fd5b50803590602001356001600160a01b0316610774565b005b61034f6107e0565b6040805160ff9092168252519081900360200190f35b6103456004803603602081101561037b57600080fd5b50356001600160a01b03166107e9565b610345600480360360408110156103a157600080fd5b50803590602001356001600160a01b0316610866565b610272600480360360408110156103cd57600080fd5b506001600160a01b0381351690602001356108c7565b6102b4600480360360208110156103f957600080fd5b50356001600160a01b0316610915565b610345610930565b6104196109e2565b604080516001600160a01b039092168252519081900360200190f35b6102b46109f6565b6104196004803603604081101561045357600080fd5b5080359060200135610a08565b6102726004803603604081101561047657600080fd5b50803590602001356001600160a01b0316610a27565b6101d1610a3f565b610345600480360360208110156104aa57600080fd5b5035610aa0565b6102b4610af5565b610272600480360360408110156104cf57600080fd5b506001600160a01b038135169060200135610afa565b610272600480360360408110156104fb57600080fd5b506001600160a01b038135169060200135610b62565b6102b46004803603602081101561052757600080fd5b5035610b76565b6103456004803603604081101561054457600080fd5b50803590602001356001600160a01b0316610b8d565b6102b46004803603604081101561057057600080fd5b506001600160a01b0381358116916020013516610be6565b610345610c11565b610345600480360360208110156105a657600080fd5b50356001600160a01b0316610c32565b610345600480360360208110156105cc57600080fd5b50356001600160a01b0316610cac565b60038054604080516020601f60026000196101006001881615020190951694909404938401819004810282018101909252828152606093909290918301828280156106685780601f1061063d57610100808354040283529160200191610668565b820191906000526020600020905b81548152906001019060200180831161064b57829003601f168201915b5050505050905090565b600061068661067f610e14565b8484610e18565b5060015b92915050565b60006106aa60008051602061156083398151915283610a27565b8061068a5750816001600160a01b03166106c26109e2565b6001600160a01b03161492915050565b60025490565b60006106e5848484610f04565b610755846106f1610e14565b6107508560405180606001604052806028815260200161160c602891396001600160a01b038a1660009081526001602052604081209061072f610e14565b6001600160a01b03168152602081019190915260400160002054919061105f565b610e18565b5060019392505050565b60009081526006602052604090206002015490565b60008281526006602052604090206002015461079790610792610e14565b610a27565b6107d25760405162461bcd60e51b815260040180806020018281038252602f8152602001806114e9602f913960400191505060405180910390fd5b6107dc82826110f6565b5050565b60055460ff1690565b6107f1610e14565b6001600160a01b03166108026109e2565b6001600160a01b03161461084b576040805162461bcd60e51b81526020600482018190526024820152600080516020611634833981519152604482015290519081900360640190fd5b610863600080516020611560833981519152826107d2565b50565b61086e610e14565b6001600160a01b0316816001600160a01b0316146108bd5760405162461bcd60e51b815260040180806020018281038252602f8152602001806116c2602f913960400191505060405180910390fd5b6107dc828261115f565b60006106866108d4610e14565b8461075085600160006108e5610e14565b6001600160a01b03908116825260208083019390935260409182016000908120918c168152925290205490610dba565b6001600160a01b031660009081526020819052604090205490565b610938610e14565b6001600160a01b03166109496109e2565b6001600160a01b031614610992576040805162461bcd60e51b81526020600482018190526024820152600080516020611634833981519152604482015290519081900360640190fd5b60055460405160009161010090046001600160a01b0316907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a360058054610100600160a81b0319169055565b60055461010090046001600160a01b031690565b60008051602061156083398151915281565b6000828152600660205260408120610a2090836111c8565b9392505050565b6000828152600660205260408120610a2090836111d4565b60048054604080516020601f60026000196101006001881615020190951694909404938401819004810282018101909252828152606093909290918301828280156106685780601f1061063d57610100808354040283529160200191610668565b610ab0610aab610e14565b610690565b610aeb5760405162461bcd60e51b81526004018080602001828103825260368152602001806115a66036913960400191505060405180910390fd5b61086333826111e9565b600081565b6000610686610b07610e14565b846107508560405180606001604052806025815260200161169d6025913960016000610b31610e14565b6001600160a01b03908116825260208083019390935260409182016000908120918d1681529252902054919061105f565b6000610686610b6f610e14565b8484610f04565b600081815260066020526040812061068a906112d9565b600082815260066020526040902060020154610bab90610792610e14565b6108bd5760405162461bcd60e51b81526004018080602001828103825260308152602001806115dc6030913960400191505060405180910390fd5b6001600160a01b03918216600090815260016020908152604080832093909416825291909152205490565b610c30600080516020611560833981519152610c2b610e14565b610866565b565b610c3a610e14565b6001600160a01b0316610c4b6109e2565b6001600160a01b031614610c94576040805162461bcd60e51b81526020600482018190526024820152600080516020611634833981519152604482015290519081900360640190fd5b61086360008051602061156083398151915282610b8d565b610cb4610e14565b6001600160a01b0316610cc56109e2565b6001600160a01b031614610d0e576040805162461bcd60e51b81526020600482018190526024820152600080516020611634833981519152604482015290519081900360640190fd5b6001600160a01b038116610d535760405162461bcd60e51b81526004018080602001828103825260268152602001806115186026913960400191505060405180910390fd5b6005546040516001600160a01b0380841692610100900416907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a3600580546001600160a01b0390921661010002610100600160a81b0319909216919091179055565b600082820183811015610a20576040805162461bcd60e51b815260206004820152601b60248201527f536166654d6174683a206164646974696f6e206f766572666c6f770000000000604482015290519081900360640190fd5b3390565b6001600160a01b038316610e5d5760405162461bcd60e51b81526004018080602001828103825260248152602001806116796024913960400191505060405180910390fd5b6001600160a01b038216610ea25760405162461bcd60e51b815260040180806020018281038252602281526020018061153e6022913960400191505060405180910390fd5b6001600160a01b03808416600081815260016020908152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b6001600160a01b038316610f495760405162461bcd60e51b81526004018080602001828103825260258152602001806116546025913960400191505060405180910390fd5b6001600160a01b038216610f8e5760405162461bcd60e51b81526004018080602001828103825260238152602001806114c66023913960400191505060405180910390fd5b610f998383836112e4565b610fd681604051806060016040528060268152602001611580602691396001600160a01b038616600090815260208190526040902054919061105f565b6001600160a01b0380851660009081526020819052604080822093909355908416815220546110059082610dba565b6001600160a01b038084166000818152602081815260409182902094909455805185815290519193928716927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef92918290030190a3505050565b600081848411156110ee5760405162461bcd60e51b81526004018080602001828103825283818151815260200191508051906020019080838360005b838110156110b357818101518382015260200161109b565b50505050905090810190601f1680156110e05780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b505050900390565b600082815260066020526040902061110e90826112e9565b156107dc5761111b610e14565b6001600160a01b0316816001600160a01b0316837f2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d60405160405180910390a45050565b600082815260066020526040902061117790826112fe565b156107dc57611184610e14565b6001600160a01b0316816001600160a01b0316837ff6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b60405160405180910390a45050565b6000610a208383611313565b6000610a20836001600160a01b038416611377565b6001600160a01b038216611244576040805162461bcd60e51b815260206004820152601f60248201527f45524332303a206d696e7420746f20746865207a65726f206164647265737300604482015290519081900360640190fd5b611250600083836112e4565b60025461125d9082610dba565b6002556001600160a01b0382166000908152602081905260409020546112839082610dba565b6001600160a01b0383166000818152602081815260408083209490945583518581529351929391927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9281900390910190a35050565b600061068a8261138f565b505050565b6000610a20836001600160a01b038416611393565b6000610a20836001600160a01b0384166113dd565b815460009082106113555760405162461bcd60e51b81526004018080602001828103825260228152602001806114a46022913960400191505060405180910390fd5b82600001828154811061136457fe5b9060005260206000200154905092915050565b60009081526001919091016020526040902054151590565b5490565b600061139f8383611377565b6113d55750815460018181018455600084815260208082209093018490558454848252828601909352604090209190915561068a565b50600061068a565b60008181526001830160205260408120548015611499578354600019808301919081019060009087908390811061141057fe5b906000526020600020015490508087600001848154811061142d57fe5b60009182526020808320909101929092558281526001898101909252604090209084019055865487908061145d57fe5b6001900381819060005260206000200160009055905586600101600087815260200190815260200160002060009055600194505050505061068a565b600091505061068a56fe456e756d657261626c655365743a20696e646578206f7574206f6620626f756e647345524332303a207472616e7366657220746f20746865207a65726f2061646472657373416363657373436f6e74726f6c3a2073656e646572206d75737420626520616e2061646d696e20746f206772616e744f776e61626c653a206e6577206f776e657220697320746865207a65726f206164647265737345524332303a20617070726f766520746f20746865207a65726f2061646472657373641e16bf8adecd73ba0a8375248f9ed087f0f27a2661b4fd664ad5eda0506f7d45524332303a207472616e7366657220616d6f756e7420657863656564732062616c616e6365436f6e74726f6c6572526f6c653a2063616c6c657220646f6573206e6f7420686176652074686520436f6e74726f6c657220726f6c65416363657373436f6e74726f6c3a2073656e646572206d75737420626520616e2061646d696e20746f207265766f6b6545524332303a207472616e7366657220616d6f756e74206578636565647320616c6c6f77616e63654f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657245524332303a207472616e736665722066726f6d20746865207a65726f206164647265737345524332303a20617070726f76652066726f6d20746865207a65726f206164647265737345524332303a2064656372656173656420616c6c6f77616e63652062656c6f77207a65726f416363657373436f6e74726f6c3a2063616e206f6e6c792072656e6f756e636520726f6c657320666f722073656c66a2646970667358221220b441d1eae67d3045015d9dbb8fed69d91389ec286acab05591bd8be3ceb01fde64736f6c63430007060033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106101c45760003560e01c80638f0858fb116100f9578063a9059cbb11610097578063dd62ed3e11610071578063dd62ed3e1461055a578063e5c8b03d14610588578063f2aa7b0b14610590578063f2fde38b146105b6576101c4565b8063a9059cbb146104e5578063ca15c87314610511578063d547741f1461052e576101c4565b806395d89b41116100d357806395d89b411461048c578063a0712d6814610494578063a217fddf146104b1578063a457c2d7146104b9576101c4565b80638f0858fb146104355780639010d07c1461043d57806391d1485414610460576101c4565b8063313ce56711610166578063395093511161014057806339509351146103b757806370a08231146103e3578063715018a6146104095780638da5cb5b14610411576101c4565b8063313ce5671461034757806333f1b0851461036557806336568abe1461038b576101c4565b806318160ddd116101a257806318160ddd146102ac57806323b872dd146102c6578063248a9ca3146102fc5780632f2ff15d14610319576101c4565b806306fdde03146101c9578063095ea7b314610246578063132b984714610286575b600080fd5b6101d16105dc565b6040805160208082528351818301528351919283929083019185019080838360005b8381101561020b5781810151838201526020016101f3565b50505050905090810190601f1680156102385780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b6102726004803603604081101561025c57600080fd5b506001600160a01b038135169060200135610672565b604080519115158252519081900360200190f35b6102726004803603602081101561029c57600080fd5b50356001600160a01b0316610690565b6102b46106d2565b60408051918252519081900360200190f35b610272600480360360608110156102dc57600080fd5b506001600160a01b038135811691602081013590911690604001356106d8565b6102b46004803603602081101561031257600080fd5b503561075f565b6103456004803603604081101561032f57600080fd5b50803590602001356001600160a01b0316610774565b005b61034f6107e0565b6040805160ff9092168252519081900360200190f35b6103456004803603602081101561037b57600080fd5b50356001600160a01b03166107e9565b610345600480360360408110156103a157600080fd5b50803590602001356001600160a01b0316610866565b610272600480360360408110156103cd57600080fd5b506001600160a01b0381351690602001356108c7565b6102b4600480360360208110156103f957600080fd5b50356001600160a01b0316610915565b610345610930565b6104196109e2565b604080516001600160a01b039092168252519081900360200190f35b6102b46109f6565b6104196004803603604081101561045357600080fd5b5080359060200135610a08565b6102726004803603604081101561047657600080fd5b50803590602001356001600160a01b0316610a27565b6101d1610a3f565b610345600480360360208110156104aa57600080fd5b5035610aa0565b6102b4610af5565b610272600480360360408110156104cf57600080fd5b506001600160a01b038135169060200135610afa565b610272600480360360408110156104fb57600080fd5b506001600160a01b038135169060200135610b62565b6102b46004803603602081101561052757600080fd5b5035610b76565b6103456004803603604081101561054457600080fd5b50803590602001356001600160a01b0316610b8d565b6102b46004803603604081101561057057600080fd5b506001600160a01b0381358116916020013516610be6565b610345610c11565b610345600480360360208110156105a657600080fd5b50356001600160a01b0316610c32565b610345600480360360208110156105cc57600080fd5b50356001600160a01b0316610cac565b60038054604080516020601f60026000196101006001881615020190951694909404938401819004810282018101909252828152606093909290918301828280156106685780601f1061063d57610100808354040283529160200191610668565b820191906000526020600020905b81548152906001019060200180831161064b57829003601f168201915b5050505050905090565b600061068661067f610e14565b8484610e18565b5060015b92915050565b60006106aa60008051602061156083398151915283610a27565b8061068a5750816001600160a01b03166106c26109e2565b6001600160a01b03161492915050565b60025490565b60006106e5848484610f04565b610755846106f1610e14565b6107508560405180606001604052806028815260200161160c602891396001600160a01b038a1660009081526001602052604081209061072f610e14565b6001600160a01b03168152602081019190915260400160002054919061105f565b610e18565b5060019392505050565b60009081526006602052604090206002015490565b60008281526006602052604090206002015461079790610792610e14565b610a27565b6107d25760405162461bcd60e51b815260040180806020018281038252602f8152602001806114e9602f913960400191505060405180910390fd5b6107dc82826110f6565b5050565b60055460ff1690565b6107f1610e14565b6001600160a01b03166108026109e2565b6001600160a01b03161461084b576040805162461bcd60e51b81526020600482018190526024820152600080516020611634833981519152604482015290519081900360640190fd5b610863600080516020611560833981519152826107d2565b50565b61086e610e14565b6001600160a01b0316816001600160a01b0316146108bd5760405162461bcd60e51b815260040180806020018281038252602f8152602001806116c2602f913960400191505060405180910390fd5b6107dc828261115f565b60006106866108d4610e14565b8461075085600160006108e5610e14565b6001600160a01b03908116825260208083019390935260409182016000908120918c168152925290205490610dba565b6001600160a01b031660009081526020819052604090205490565b610938610e14565b6001600160a01b03166109496109e2565b6001600160a01b031614610992576040805162461bcd60e51b81526020600482018190526024820152600080516020611634833981519152604482015290519081900360640190fd5b60055460405160009161010090046001600160a01b0316907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a360058054610100600160a81b0319169055565b60055461010090046001600160a01b031690565b60008051602061156083398151915281565b6000828152600660205260408120610a2090836111c8565b9392505050565b6000828152600660205260408120610a2090836111d4565b60048054604080516020601f60026000196101006001881615020190951694909404938401819004810282018101909252828152606093909290918301828280156106685780601f1061063d57610100808354040283529160200191610668565b610ab0610aab610e14565b610690565b610aeb5760405162461bcd60e51b81526004018080602001828103825260368152602001806115a66036913960400191505060405180910390fd5b61086333826111e9565b600081565b6000610686610b07610e14565b846107508560405180606001604052806025815260200161169d6025913960016000610b31610e14565b6001600160a01b03908116825260208083019390935260409182016000908120918d1681529252902054919061105f565b6000610686610b6f610e14565b8484610f04565b600081815260066020526040812061068a906112d9565b600082815260066020526040902060020154610bab90610792610e14565b6108bd5760405162461bcd60e51b81526004018080602001828103825260308152602001806115dc6030913960400191505060405180910390fd5b6001600160a01b03918216600090815260016020908152604080832093909416825291909152205490565b610c30600080516020611560833981519152610c2b610e14565b610866565b565b610c3a610e14565b6001600160a01b0316610c4b6109e2565b6001600160a01b031614610c94576040805162461bcd60e51b81526020600482018190526024820152600080516020611634833981519152604482015290519081900360640190fd5b61086360008051602061156083398151915282610b8d565b610cb4610e14565b6001600160a01b0316610cc56109e2565b6001600160a01b031614610d0e576040805162461bcd60e51b81526020600482018190526024820152600080516020611634833981519152604482015290519081900360640190fd5b6001600160a01b038116610d535760405162461bcd60e51b81526004018080602001828103825260268152602001806115186026913960400191505060405180910390fd5b6005546040516001600160a01b0380841692610100900416907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a3600580546001600160a01b0390921661010002610100600160a81b0319909216919091179055565b600082820183811015610a20576040805162461bcd60e51b815260206004820152601b60248201527f536166654d6174683a206164646974696f6e206f766572666c6f770000000000604482015290519081900360640190fd5b3390565b6001600160a01b038316610e5d5760405162461bcd60e51b81526004018080602001828103825260248152602001806116796024913960400191505060405180910390fd5b6001600160a01b038216610ea25760405162461bcd60e51b815260040180806020018281038252602281526020018061153e6022913960400191505060405180910390fd5b6001600160a01b03808416600081815260016020908152604080832094871680845294825291829020859055815185815291517f8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b9259281900390910190a3505050565b6001600160a01b038316610f495760405162461bcd60e51b81526004018080602001828103825260258152602001806116546025913960400191505060405180910390fd5b6001600160a01b038216610f8e5760405162461bcd60e51b81526004018080602001828103825260238152602001806114c66023913960400191505060405180910390fd5b610f998383836112e4565b610fd681604051806060016040528060268152602001611580602691396001600160a01b038616600090815260208190526040902054919061105f565b6001600160a01b0380851660009081526020819052604080822093909355908416815220546110059082610dba565b6001600160a01b038084166000818152602081815260409182902094909455805185815290519193928716927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef92918290030190a3505050565b600081848411156110ee5760405162461bcd60e51b81526004018080602001828103825283818151815260200191508051906020019080838360005b838110156110b357818101518382015260200161109b565b50505050905090810190601f1680156110e05780820380516001836020036101000a031916815260200191505b509250505060405180910390fd5b505050900390565b600082815260066020526040902061110e90826112e9565b156107dc5761111b610e14565b6001600160a01b0316816001600160a01b0316837f2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d60405160405180910390a45050565b600082815260066020526040902061117790826112fe565b156107dc57611184610e14565b6001600160a01b0316816001600160a01b0316837ff6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b60405160405180910390a45050565b6000610a208383611313565b6000610a20836001600160a01b038416611377565b6001600160a01b038216611244576040805162461bcd60e51b815260206004820152601f60248201527f45524332303a206d696e7420746f20746865207a65726f206164647265737300604482015290519081900360640190fd5b611250600083836112e4565b60025461125d9082610dba565b6002556001600160a01b0382166000908152602081905260409020546112839082610dba565b6001600160a01b0383166000818152602081815260408083209490945583518581529351929391927fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef9281900390910190a35050565b600061068a8261138f565b505050565b6000610a20836001600160a01b038416611393565b6000610a20836001600160a01b0384166113dd565b815460009082106113555760405162461bcd60e51b81526004018080602001828103825260228152602001806114a46022913960400191505060405180910390fd5b82600001828154811061136457fe5b9060005260206000200154905092915050565b60009081526001919091016020526040902054151590565b5490565b600061139f8383611377565b6113d55750815460018181018455600084815260208082209093018490558454848252828601909352604090209190915561068a565b50600061068a565b60008181526001830160205260408120548015611499578354600019808301919081019060009087908390811061141057fe5b906000526020600020015490508087600001848154811061142d57fe5b60009182526020808320909101929092558281526001898101909252604090209084019055865487908061145d57fe5b6001900381819060005260206000200160009055905586600101600087815260200190815260200160002060009055600194505050505061068a565b600091505061068a56fe456e756d657261626c655365743a20696e646578206f7574206f6620626f756e647345524332303a207472616e7366657220746f20746865207a65726f2061646472657373416363657373436f6e74726f6c3a2073656e646572206d75737420626520616e2061646d696e20746f206772616e744f776e61626c653a206e6577206f776e657220697320746865207a65726f206164647265737345524332303a20617070726f766520746f20746865207a65726f2061646472657373641e16bf8adecd73ba0a8375248f9ed087f0f27a2661b4fd664ad5eda0506f7d45524332303a207472616e7366657220616d6f756e7420657863656564732062616c616e6365436f6e74726f6c6572526f6c653a2063616c6c657220646f6573206e6f7420686176652074686520436f6e74726f6c657220726f6c65416363657373436f6e74726f6c3a2073656e646572206d75737420626520616e2061646d696e20746f207265766f6b6545524332303a207472616e7366657220616d6f756e74206578636565647320616c6c6f77616e63654f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e657245524332303a207472616e736665722066726f6d20746865207a65726f206164647265737345524332303a20617070726f76652066726f6d20746865207a65726f206164647265737345524332303a2064656372656173656420616c6c6f77616e63652062656c6f77207a65726f416363657373436f6e74726f6c3a2063616e206f6e6c792072656e6f756e636520726f6c657320666f722073656c66a2646970667358221220b441d1eae67d3045015d9dbb8fed69d91389ec286acab05591bd8be3ceb01fde64736f6c63430007060033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "210:283:23:-:0;;;308:84;;;;;;;;;-1:-1:-1;1958:145:36;;;;;;;;;;;;-1:-1:-1;;;1958:145:36;;;;;;;;;;;;;;;;;;;;;2032:13;;1958:145;;;2032:13;;:5;;:13;:::i;:::-;-1:-1:-1;2055:17:36;;;;:7;;:17;;;;;:::i;:::-;-1:-1:-1;;2082:9:36;:14;;-1:-1:-1;;2082:14:36;2094:2;2082:14;;;-1:-1:-1;2082:9:36;904:12:34;:10;:12::i;:::-;926:6;:18;;-1:-1:-1;;;;;;926:18:34;;-1:-1:-1;;;;;926:18:34;;;;;;;;;;;;959:43;;926:18;;-1:-1:-1;926:18:34;-1:-1:-1;;959:43:34;;-1:-1:-1;;959:43:34;-1:-1:-1;339:46:23;345:10;357:27;339:5;:46::i;:::-;210:283;;598:104:40;685:10;598:104;:::o;7832:370:36:-;-1:-1:-1;;;;;7915:21:36;;7907:65;;;;;-1:-1:-1;;;7907:65:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;7983:49;8012:1;8016:7;8025:6;7983:20;:49::i;:::-;8058:24;8075:6;8058:12;;:16;;;;;;:24;;;;:::i;:::-;8043:12;:39;-1:-1:-1;;;;;8113:18:36;;:9;:18;;;;;;;;;;;;:30;;8136:6;;8113:22;;;;;:30;;:::i;:::-;-1:-1:-1;;;;;8092:18:36;;:9;:18;;;;;;;;;;;:51;;;;8158:37;;;;;;;8092:18;;:9;;8158:37;;;;;;;;;;7832:370;;:::o;10701:92::-;;;;:::o;2690:175:35:-;2748:7;2779:5;;;2802:6;;;;2794:46;;;;;-1:-1:-1;;;2794:46:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;2857:1;2690:175;-1:-1:-1;;;2690:175:35:o;210:283:23:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;210:283:23;;;-1:-1:-1;210:283:23;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "210:283:23:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2168:89:36;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4244:166;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;4244:166:36;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;463:145:28;;;;;;;;;;;;;;;;-1:-1:-1;463:145:28;-1:-1:-1;;;;;463:145:28;;:::i;3235:106:36:-;;;:::i;:::-;;;;;;;;;;;;;;;;4877:317;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;4877:317:36;;;;;;;;;;;;;;;;;:::i;4282:112:33:-;;;;;;;;;;;;;;;;-1:-1:-1;4282:112:33;;:::i;4644:223::-;;;;;;;;;;;;;;;;-1:-1:-1;4644:223:33;;;;;;-1:-1:-1;;;;;4644:223:33;;:::i;:::-;;3086:89:36;;;:::i;:::-;;;;;;;;;;;;;;;;;;;614:108:28;;;;;;;;;;;;;;;;-1:-1:-1;614:108:28;-1:-1:-1;;;;;614:108:28;;:::i;5818:205:33:-;;;;;;;;;;;;;;;;-1:-1:-1;5818:205:33;;;;;;-1:-1:-1;;;;;5818:205:33;;:::i;5589:215:36:-;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;5589:215:36;;;;;;;;:::i;3399:125::-;;;;;;;;;;;;;;;;-1:-1:-1;3399:125:36;-1:-1:-1;;;;;3399:125:36;;:::i;1717:145:34:-;;;:::i;1085:85::-;;;:::i;:::-;;;;-1:-1:-1;;;;;1085:85:34;;;;;;;;;;;;;;237:68:28;;;:::i;3965:136:33:-;;;;;;;;;;;;;;;;-1:-1:-1;3965:136:33;;;;;;;:::i;2950:137::-;;;;;;;;;;;;;;;;-1:-1:-1;2950:137:33;;;;;;-1:-1:-1;;;;;2950:137:33;;:::i;2370:93:36:-;;;:::i;398::23:-;;;;;;;;;;;;;;;;-1:-1:-1;398:93:23;;:::i;1727:49:33:-;;;:::i;6291:266:36:-;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;6291:266:36;;;;;;;;:::i;3727:172::-;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;3727:172:36;;;;;;;;:::i;3255:125:33:-;;;;;;;;;;;;;;;;-1:-1:-1;3255:125:33;;:::i;5101:226::-;;;;;;;;;;;;;;;;-1:-1:-1;5101:226:33;;;;;;-1:-1:-1;;;;;5101:226:33;;:::i;3957:149:36:-;;;;;;;;;;;;;;;;-1:-1:-1;;;;;;3957:149:36;;;;;;;;;;:::i;728:92:28:-;;;:::i;826:111::-;;;;;;;;;;;;;;;;-1:-1:-1;826:111:28;-1:-1:-1;;;;;826:111:28;;:::i;2011:240:34:-;;;;;;;;;;;;;;;;-1:-1:-1;2011:240:34;-1:-1:-1;;;;;2011:240:34;;:::i;2168:89:36:-;2245:5;2238:12;;;;;;;;-1:-1:-1;;2238:12:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2213:13;;2238:12;;2245:5;;2238:12;;2245:5;2238:12;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2168:89;:::o;4244:166::-;4327:4;4343:39;4352:12;:10;:12::i;:::-;4366:7;4375:6;4343:8;:39::i;:::-;-1:-1:-1;4399:4:36;4244:166;;;;;:::o;463:145:28:-;522:4;545:32;-1:-1:-1;;;;;;;;;;;569:7:28;545;:32::i;:::-;:56;;;;593:7;-1:-1:-1;;;;;582:18:28;:7;:5;:7::i;:::-;-1:-1:-1;;;;;582:18:28;;538:63;463:145;-1:-1:-1;;463:145:28:o;3235:106:36:-;3322:12;;3235:106;:::o;4877:317::-;4983:4;4999:36;5009:6;5017:9;5028:6;4999:9;:36::i;:::-;5045:121;5054:6;5062:12;:10;:12::i;:::-;5076:89;5114:6;5076:89;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;5076:19:36;;;;;;:11;:19;;;;;;5096:12;:10;:12::i;:::-;-1:-1:-1;;;;;5076:33:36;;;;;;;;;;;;-1:-1:-1;5076:33:36;;;:89;:37;:89::i;:::-;5045:8;:121::i;:::-;-1:-1:-1;5183:4:36;4877:317;;;;;:::o;4282:112:33:-;4339:7;4365:12;;;:6;:12;;;;;:22;;;;4282:112::o;4644:223::-;4735:12;;;;:6;:12;;;;;:22;;;4727:45;;4759:12;:10;:12::i;:::-;4727:7;:45::i;:::-;4719:105;;;;-1:-1:-1;;;4719:105:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4835:25;4846:4;4852:7;4835:10;:25::i;:::-;4644:223;;:::o;3086:89:36:-;3159:9;;;;3086:89;:::o;614:108:28:-;1308:12:34;:10;:12::i;:::-;-1:-1:-1;;;;;1297:23:34;:7;:5;:7::i;:::-;-1:-1:-1;;;;;1297:23:34;;1289:68;;;;;-1:-1:-1;;;1289:68:34;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1289:68:34;;;;;;;;;;;;;;;680:35:28::1;-1:-1:-1::0;;;;;;;;;;;707:7:28::1;680:10;:35::i;:::-;614:108:::0;:::o;5818:205:33:-;5915:12;:10;:12::i;:::-;-1:-1:-1;;;;;5904:23:33;:7;-1:-1:-1;;;;;5904:23:33;;5896:83;;;;-1:-1:-1;;;5896:83:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;5990:26;6002:4;6008:7;5990:11;:26::i;5589:215:36:-;5677:4;5693:83;5702:12;:10;:12::i;:::-;5716:7;5725:50;5764:10;5725:11;:25;5737:12;:10;:12::i;:::-;-1:-1:-1;;;;;5725:25:36;;;;;;;;;;;;;;;;;-1:-1:-1;5725:25:36;;;:34;;;;;;;;;;;:38;:50::i;3399:125::-;-1:-1:-1;;;;;3499:18:36;3473:7;3499:18;;;;;;;;;;;;3399:125::o;1717:145:34:-;1308:12;:10;:12::i;:::-;-1:-1:-1;;;;;1297:23:34;:7;:5;:7::i;:::-;-1:-1:-1;;;;;1297:23:34;;1289:68;;;;;-1:-1:-1;;;1289:68:34;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1289:68:34;;;;;;;;;;;;;;;1807:6:::1;::::0;1786:40:::1;::::0;1823:1:::1;::::0;1807:6:::1;::::0;::::1;-1:-1:-1::0;;;;;1807:6:34::1;::::0;1786:40:::1;::::0;1823:1;;1786:40:::1;1836:6;:19:::0;;-1:-1:-1;;;;;;1836:19:34::1;::::0;;1717:145::o;1085:85::-;1157:6;;;;;-1:-1:-1;;;;;1157:6:34;;1085:85::o;237:68:28:-;-1:-1:-1;;;;;;;;;;;237:68:28;:::o;3965:136:33:-;4038:7;4064:12;;;:6;:12;;;;;:30;;4088:5;4064:23;:30::i;:::-;4057:37;3965:136;-1:-1:-1;;;3965:136:33:o;2950:137::-;3019:4;3042:12;;;:6;:12;;;;;:38;;3072:7;3042:29;:38::i;2370:93:36:-;2449:7;2442:14;;;;;;;;-1:-1:-1;;2442:14:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2417:13;;2442:14;;2449:7;;2442:14;;2449:7;2442:14;;;;;;;;;;;;;;;;;;;;;;;;398:93:23;355:25:28;367:12;:10;:12::i;:::-;355:11;:25::i;:::-;347:92;;;;-1:-1:-1;;;347:92:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;459:25:23::1;465:10;477:6;459:5;:25::i;1727:49:33:-:0;1772:4;1727:49;:::o;6291:266:36:-;6384:4;6400:129;6409:12;:10;:12::i;:::-;6423:7;6432:96;6471:15;6432:96;;;;;;;;;;;;;;;;;:11;:25;6444:12;:10;:12::i;:::-;-1:-1:-1;;;;;6432:25:36;;;;;;;;;;;;;;;;;-1:-1:-1;6432:25:36;;;:34;;;;;;;;;;;:96;:38;:96::i;3727:172::-;3813:4;3829:42;3839:12;:10;:12::i;:::-;3853:9;3864:6;3829:9;:42::i;3255:125:33:-;3318:7;3344:12;;;:6;:12;;;;;:29;;:27;:29::i;5101:226::-;5193:12;;;;:6;:12;;;;;:22;;;5185:45;;5217:12;:10;:12::i;5185:45::-;5177:106;;;;-1:-1:-1;;;5177:106:33;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3957:149:36;-1:-1:-1;;;;;4072:18:36;;;4046:7;4072:18;;;:11;:18;;;;;;;;:27;;;;;;;;;;;;;3957:149::o;728:92:28:-;771:42;-1:-1:-1;;;;;;;;;;;800:12:28;:10;:12::i;:::-;771;:42::i;:::-;728:92::o;826:111::-;1308:12:34;:10;:12::i;:::-;-1:-1:-1;;;;;1297:23:34;:7;:5;:7::i;:::-;-1:-1:-1;;;;;1297:23:34;;1289:68;;;;;-1:-1:-1;;;1289:68:34;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1289:68:34;;;;;;;;;;;;;;;895:35:28::1;-1:-1:-1::0;;;;;;;;;;;922:7:28::1;895:10;:35::i;2011:240:34:-:0;1308:12;:10;:12::i;:::-;-1:-1:-1;;;;;1297:23:34;:7;:5;:7::i;:::-;-1:-1:-1;;;;;1297:23:34;;1289:68;;;;;-1:-1:-1;;;1289:68:34;;;;;;;;;;;;;-1:-1:-1;;;;;;;;;;;1289:68:34;;;;;;;;;;;;;;;-1:-1:-1;;;;;2099:22:34;::::1;2091:73;;;;-1:-1:-1::0;;;2091:73:34::1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2200:6;::::0;2179:38:::1;::::0;-1:-1:-1;;;;;2179:38:34;;::::1;::::0;2200:6:::1;::::0;::::1;;::::0;2179:38:::1;::::0;;;::::1;2227:6;:17:::0;;-1:-1:-1;;;;;2227:17:34;;::::1;;;-1:-1:-1::0;;;;;;2227:17:34;;::::1;::::0;;;::::1;::::0;;2011:240::o;2690:175:35:-;2748:7;2779:5;;;2802:6;;;;2794:46;;;;;-1:-1:-1;;;2794:46:35;;;;;;;;;;;;;;;;;;;;;;;;;;;598:104:40;685:10;598:104;:::o;9355:340:36:-;-1:-1:-1;;;;;9456:19:36;;9448:68;;;;-1:-1:-1;;;9448:68:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;9534:21:36;;9526:68;;;;-1:-1:-1;;;9526:68:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;9605:18:36;;;;;;;:11;:18;;;;;;;;:27;;;;;;;;;;;;;:36;;;9656:32;;;;;;;;;;;;;;;;;9355:340;;;:::o;7031:530::-;-1:-1:-1;;;;;7136:20:36;;7128:70;;;;-1:-1:-1;;;7128:70:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;7216:23:36;;7208:71;;;;-1:-1:-1;;;7208:71:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;7290:47;7311:6;7319:9;7330:6;7290:20;:47::i;:::-;7368:71;7390:6;7368:71;;;;;;;;;;;;;;;;;-1:-1:-1;;;;;7368:17:36;;:9;:17;;;;;;;;;;;;:71;:21;:71::i;:::-;-1:-1:-1;;;;;7348:17:36;;;:9;:17;;;;;;;;;;;:91;;;;7472:20;;;;;;;:32;;7497:6;7472:24;:32::i;:::-;-1:-1:-1;;;;;7449:20:36;;;:9;:20;;;;;;;;;;;;:55;;;;7519:35;;;;;;;7449:20;;7519:35;;;;;;;;;;;;;7031:530;;;:::o;5432:163:35:-;5518:7;5553:12;5545:6;;;;5537:29;;;;-1:-1:-1;;;5537:29:35;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;;5583:5:35;;;5432:163::o;7025:184:33:-;7098:12;;;;:6;:12;;;;;:33;;7123:7;7098:24;:33::i;:::-;7094:109;;;7179:12;:10;:12::i;:::-;-1:-1:-1;;;;;7152:40:33;7170:7;-1:-1:-1;;;;;7152:40:33;7164:4;7152:40;;;;;;;;;;7025:184;;:::o;7215:188::-;7289:12;;;;:6;:12;;;;;:36;;7317:7;7289:27;:36::i;:::-;7285:112;;;7373:12;:10;:12::i;:::-;-1:-1:-1;;;;;7346:40:33;7364:7;-1:-1:-1;;;;;7346:40:33;7358:4;7346:40;;;;;;;;;;7215:188;;:::o;7677:156:41:-;7751:7;7801:22;7805:3;7817:5;7801:3;:22::i;6984:165::-;7064:4;7087:55;7097:3;-1:-1:-1;;;;;7117:23:41;;7087:9;:55::i;7832:370:36:-;-1:-1:-1;;;;;7915:21:36;;7907:65;;;;;-1:-1:-1;;;7907:65:36;;;;;;;;;;;;;;;;;;;;;;;;;;;;7983:49;8012:1;8016:7;8025:6;7983:20;:49::i;:::-;8058:12;;:24;;8075:6;8058:16;:24::i;:::-;8043:12;:39;-1:-1:-1;;;;;8113:18:36;;:9;:18;;;;;;;;;;;:30;;8136:6;8113:22;:30::i;:::-;-1:-1:-1;;;;;8092:18:36;;:9;:18;;;;;;;;;;;:51;;;;8158:37;;;;;;;8092:18;;:9;;8158:37;;;;;;;;;;7832:370;;:::o;7230:115:41:-;7293:7;7319:19;7327:3;7319:7;:19::i;10701:92:36:-;;;;:::o;6429:150:41:-;6499:4;6522:50;6527:3;-1:-1:-1;;;;;6547:23:41;;6522:4;:50::i;6747:156::-;6820:4;6843:53;6851:3;-1:-1:-1;;;;;6871:23:41;;6843:7;:53::i;4452:201::-;4546:18;;4519:7;;4546:26;-1:-1:-1;4538:73:41;;;;-1:-1:-1;;;4538:73:41;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4628:3;:11;;4640:5;4628:18;;;;;;;;;;;;;;;;4621:25;;4452:201;;;;:::o;3805:127::-;3878:4;3901:19;;;:12;;;;;:19;;;;;;:24;;;3805:127::o;4013:107::-;4095:18;;4013:107::o;1640:404::-;1703:4;1724:21;1734:3;1739:5;1724:9;:21::i;:::-;1719:319;;-1:-1:-1;1761:23:41;;;;;;;;:11;:23;;;;;;;;;;;;;1941:18;;1919:19;;;:12;;;:19;;;;;;:40;;;;1973:11;;1719:319;-1:-1:-1;2022:5:41;2015:12;;2212:1512;2278:4;2415:19;;;:12;;;:19;;;;;;2449:15;;2445:1273;;2878:18;;-1:-1:-1;;2830:14:41;;;;2878:22;;;;2806:21;;2878:3;;:22;;3160;;;;;;;;;;;;;;3140:42;;3303:9;3274:3;:11;;3286:13;3274:26;;;;;;;;;;;;;;;;;;;:38;;;;3378:23;;;3420:1;3378:12;;;:23;;;;;;3404:17;;;3378:43;;3527:17;;3378:3;;3527:17;;;;;;;;;;;;;;;;;;;;;;3619:3;:12;;:19;3632:5;3619:19;;;;;;;;;;;3612:26;;;3660:4;3653:11;;;;;;;;2445:1273;3702:5;3695:12;;;;",
+  "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity 0.7.6;\n\nimport \"@openzeppelin/contracts/token/ERC20/ERC20.sol\";\nimport \"@openzeppelin/contracts/math/SafeMath.sol\";\n\nimport \"../../utils/ControlerRole.sol\";\n\ncontract coinToken is ERC20(\"COIN\", \"COIN\"), ControlerRole {\n    using SafeMath for uint256;\n\n    constructor() public {\n        _mint(msg.sender, 100000000000000000000000000);\n    }\n\n    function mint(uint256 amount) public onlyControler {\n        _mint(msg.sender, amount);\n    }\n}\n",
+  "sourcePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/mocks/tokenization/coinToken.sol",
+  "ast": {
+    "absolutePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/mocks/tokenization/coinToken.sol",
+    "exportedSymbols": {
+      "AccessControl": [
+        7472
+      ],
+      "Address": [
+        9027
+      ],
+      "Context": [
+        9050
+      ],
+      "ControlerRole": [
+        6183
+      ],
+      "ERC20": [
+        8440
+      ],
+      "EnumerableSet": [
+        9542
+      ],
+      "IERC20": [
+        8518
+      ],
+      "Ownable": [
+        7582
+      ],
+      "SafeMath": [
+        7937
+      ],
+      "coinToken": [
+        5767
+      ]
+    },
+    "id": 5768,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5730,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:22:23"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "file": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+        "id": 5731,
+        "nodeType": "ImportDirective",
+        "scope": 5768,
+        "sourceUnit": 8441,
+        "src": "60:55:23",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/math/SafeMath.sol",
+        "file": "@openzeppelin/contracts/math/SafeMath.sol",
+        "id": 5732,
+        "nodeType": "ImportDirective",
+        "scope": 5768,
+        "sourceUnit": 7938,
+        "src": "116:51:23",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/utils/ControlerRole.sol",
+        "file": "../../utils/ControlerRole.sol",
+        "id": 5733,
+        "nodeType": "ImportDirective",
+        "scope": 5768,
+        "sourceUnit": 6184,
+        "src": "169:39:23",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "arguments": [
+              {
+                "hexValue": "434f494e",
+                "id": 5735,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "string",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "238:6:23",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_stringliteral_94d28cfe178ae84130ce540d5dadabd088b301735941a744d121b4926572ece0",
+                  "typeString": "literal_string \"COIN\""
+                },
+                "value": "COIN"
+              },
+              {
+                "hexValue": "434f494e",
+                "id": 5736,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "string",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "246:6:23",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_stringliteral_94d28cfe178ae84130ce540d5dadabd088b301735941a744d121b4926572ece0",
+                  "typeString": "literal_string \"COIN\""
+                },
+                "value": "COIN"
+              }
+            ],
+            "baseName": {
+              "id": 5734,
+              "name": "ERC20",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8440,
+              "src": "232:5:23",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC20_$8440",
+                "typeString": "contract ERC20"
+              }
+            },
+            "id": 5737,
+            "nodeType": "InheritanceSpecifier",
+            "src": "232:21:23"
+          },
+          {
+            "baseName": {
+              "id": 5738,
+              "name": "ControlerRole",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6183,
+              "src": "255:13:23",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ControlerRole_$6183",
+                "typeString": "contract ControlerRole"
+              }
+            },
+            "id": 5739,
+            "nodeType": "InheritanceSpecifier",
+            "src": "255:13:23"
+          }
+        ],
+        "contractDependencies": [
+          6183,
+          7472,
+          7582,
+          8440,
+          8518,
+          9050
+        ],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 5767,
+        "linearizedBaseContracts": [
+          5767,
+          6183,
+          7472,
+          7582,
+          8440,
+          8518,
+          9050
+        ],
+        "name": "coinToken",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "id": 5742,
+            "libraryName": {
+              "id": 5740,
+              "name": "SafeMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 7937,
+              "src": "281:8:23",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_SafeMath_$7937",
+                "typeString": "library SafeMath"
+              }
+            },
+            "nodeType": "UsingForDirective",
+            "src": "275:27:23",
+            "typeName": {
+              "id": 5741,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "294:7:23",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            }
+          },
+          {
+            "body": {
+              "id": 5751,
+              "nodeType": "Block",
+              "src": "329:63:23",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 5746,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "345:3:23",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 5747,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "345:10:23",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "hexValue": "313030303030303030303030303030303030303030303030303030",
+                        "id": 5748,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "357:27:23",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_100000000000000000000000000_by_1",
+                          "typeString": "int_const 100000000000000000000000000"
+                        },
+                        "value": "100000000000000000000000000"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_rational_100000000000000000000000000_by_1",
+                          "typeString": "int_const 100000000000000000000000000"
+                        }
+                      ],
+                      "id": 5745,
+                      "name": "_mint",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8316,
+                      "src": "339:5:23",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (address,uint256)"
+                      }
+                    },
+                    "id": 5749,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "339:46:23",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5750,
+                  "nodeType": "ExpressionStatement",
+                  "src": "339:46:23"
+                }
+              ]
+            },
+            "id": 5752,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5743,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "319:2:23"
+            },
+            "returnParameters": {
+              "id": 5744,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "329:0:23"
+            },
+            "scope": 5767,
+            "src": "308:84:23",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5765,
+              "nodeType": "Block",
+              "src": "449:42:23",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "expression": {
+                          "id": 5760,
+                          "name": "msg",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4294967281,
+                          "src": "465:3:23",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_magic_message",
+                            "typeString": "msg"
+                          }
+                        },
+                        "id": 5761,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "sender",
+                        "nodeType": "MemberAccess",
+                        "src": "465:10:23",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      {
+                        "id": 5762,
+                        "name": "amount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5754,
+                        "src": "477:6:23",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 5759,
+                      "name": "_mint",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8316,
+                      "src": "459:5:23",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
+                        "typeString": "function (address,uint256)"
+                      }
+                    },
+                    "id": 5763,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "459:25:23",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5764,
+                  "nodeType": "ExpressionStatement",
+                  "src": "459:25:23"
+                }
+              ]
+            },
+            "functionSelector": "a0712d68",
+            "id": 5766,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 5757,
+                "modifierName": {
+                  "id": 5756,
+                  "name": "onlyControler",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 6127,
+                  "src": "435:13:23",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "435:13:23"
+              }
+            ],
+            "name": "mint",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5755,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5754,
+                  "mutability": "mutable",
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5766,
+                  "src": "412:14:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5753,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "412:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "411:16:23"
+            },
+            "returnParameters": {
+              "id": 5758,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "449:0:23"
+            },
+            "scope": 5767,
+            "src": "398:93:23",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 5768,
+        "src": "210:283:23"
+      }
+    ],
+    "src": "36:458:23"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/mocks/tokenization/coinToken.sol",
+      "exportedSymbols": {
+        "AccessControl": [
+          7472
+        ],
+        "Address": [
+          9027
+        ],
+        "Context": [
+          9050
+        ],
+        "ControlerRole": [
+          6183
+        ],
+        "ERC20": [
+          8440
+        ],
+        "EnumerableSet": [
+          9542
+        ],
+        "IERC20": [
+          8518
+        ],
+        "Ownable": [
+          7582
+        ],
+        "SafeMath": [
+          7937
+        ],
+        "coinToken": [
+          5767
+        ]
+      },
+      "license": "GPL-3.0"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".6"
+          ]
+        },
+        "id": 5730,
+        "name": "PragmaDirective",
+        "src": "36:22:23"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 8441,
+          "absolutePath": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+          "file": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
+          "scope": 5768,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 5731,
+        "name": "ImportDirective",
+        "src": "60:55:23"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 7938,
+          "absolutePath": "@openzeppelin/contracts/math/SafeMath.sol",
+          "file": "@openzeppelin/contracts/math/SafeMath.sol",
+          "scope": 5768,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 5732,
+        "name": "ImportDirective",
+        "src": "116:51:23"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 6184,
+          "absolutePath": "/mnt/zp/QiLin-v1/test/QiLin-v1-master/contracts/utils/ControlerRole.sol",
+          "file": "../../utils/ControlerRole.sol",
+          "scope": 5768,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 5733,
+        "name": "ImportDirective",
+        "src": "169:39:23"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            6183,
+            7472,
+            7582,
+            8440,
+            8518,
+            9050
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            5767,
+            6183,
+            7472,
+            7582,
+            8440,
+            8518,
+            9050
+          ],
+          "name": "coinToken",
+          "scope": 5768
+        },
+        "children": [
+          {
+            "children": [
+              {
+                "attributes": {
+                  "name": "ERC20",
+                  "referencedDeclaration": 8440,
+                  "type": "contract ERC20"
+                },
+                "id": 5734,
+                "name": "UserDefinedTypeName",
+                "src": "232:5:23"
+              },
+              {
+                "attributes": {
+                  "hexvalue": "434f494e",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "token": "string",
+                  "type": "literal_string \"COIN\"",
+                  "value": "COIN"
+                },
+                "id": 5735,
+                "name": "Literal",
+                "src": "238:6:23"
+              },
+              {
+                "attributes": {
+                  "hexvalue": "434f494e",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "token": "string",
+                  "type": "literal_string \"COIN\"",
+                  "value": "COIN"
+                },
+                "id": 5736,
+                "name": "Literal",
+                "src": "246:6:23"
+              }
+            ],
+            "id": 5737,
+            "name": "InheritanceSpecifier",
+            "src": "232:21:23"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "ControlerRole",
+                  "referencedDeclaration": 6183,
+                  "type": "contract ControlerRole"
+                },
+                "id": 5738,
+                "name": "UserDefinedTypeName",
+                "src": "255:13:23"
+              }
+            ],
+            "id": 5739,
+            "name": "InheritanceSpecifier",
+            "src": "255:13:23"
+          },
+          {
+            "children": [
+              {
+                "attributes": {
+                  "name": "SafeMath",
+                  "referencedDeclaration": 7937,
+                  "type": "library SafeMath"
+                },
+                "id": 5740,
+                "name": "UserDefinedTypeName",
+                "src": "281:8:23"
+              },
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 5741,
+                "name": "ElementaryTypeName",
+                "src": "294:7:23"
+              }
+            ],
+            "id": 5742,
+            "name": "UsingForDirective",
+            "src": "275:27:23"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 5767,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5743,
+                "name": "ParameterList",
+                "src": "319:2:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5744,
+                "name": "ParameterList",
+                "src": "329:0:23"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                },
+                                {
+                                  "typeIdentifier": "t_rational_100000000000000000000000000_by_1",
+                                  "typeString": "int_const 100000000000000000000000000"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 8316,
+                              "type": "function (address,uint256)",
+                              "value": "_mint"
+                            },
+                            "id": 5745,
+                            "name": "Identifier",
+                            "src": "339:5:23"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 4294967281,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 5746,
+                                "name": "Identifier",
+                                "src": "345:3:23"
+                              }
+                            ],
+                            "id": 5747,
+                            "name": "MemberAccess",
+                            "src": "345:10:23"
+                          },
+                          {
+                            "attributes": {
+                              "hexvalue": "313030303030303030303030303030303030303030303030303030",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "token": "number",
+                              "type": "int_const 100000000000000000000000000",
+                              "value": "100000000000000000000000000"
+                            },
+                            "id": 5748,
+                            "name": "Literal",
+                            "src": "357:27:23"
+                          }
+                        ],
+                        "id": 5749,
+                        "name": "FunctionCall",
+                        "src": "339:46:23"
+                      }
+                    ],
+                    "id": 5750,
+                    "name": "ExpressionStatement",
+                    "src": "339:46:23"
+                  }
+                ],
+                "id": 5751,
+                "name": "Block",
+                "src": "329:63:23"
+              }
+            ],
+            "id": 5752,
+            "name": "FunctionDefinition",
+            "src": "308:84:23"
+          },
+          {
+            "attributes": {
+              "functionSelector": "a0712d68",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "mint",
+              "scope": 5767,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "amount",
+                      "scope": 5766,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 5753,
+                        "name": "ElementaryTypeName",
+                        "src": "412:7:23"
+                      }
+                    ],
+                    "id": 5754,
+                    "name": "VariableDeclaration",
+                    "src": "412:14:23"
+                  }
+                ],
+                "id": 5755,
+                "name": "ParameterList",
+                "src": "411:16:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5758,
+                "name": "ParameterList",
+                "src": "449:0:23"
+              },
+              {
+                "attributes": {},
+                "children": [
+                  {
+                    "attributes": {
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 6127,
+                      "type": "modifier ()",
+                      "value": "onlyControler"
+                    },
+                    "id": 5756,
+                    "name": "Identifier",
+                    "src": "435:13:23"
+                  }
+                ],
+                "id": 5757,
+                "name": "ModifierInvocation",
+                "src": "435:13:23"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                },
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 8316,
+                              "type": "function (address,uint256)",
+                              "value": "_mint"
+                            },
+                            "id": 5759,
+                            "name": "Identifier",
+                            "src": "459:5:23"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "sender",
+                              "type": "address payable"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 4294967281,
+                                  "type": "msg",
+                                  "value": "msg"
+                                },
+                                "id": 5760,
+                                "name": "Identifier",
+                                "src": "465:3:23"
+                              }
+                            ],
+                            "id": 5761,
+                            "name": "MemberAccess",
+                            "src": "465:10:23"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5754,
+                              "type": "uint256",
+                              "value": "amount"
+                            },
+                            "id": 5762,
+                            "name": "Identifier",
+                            "src": "477:6:23"
+                          }
+                        ],
+                        "id": 5763,
+                        "name": "FunctionCall",
+                        "src": "459:25:23"
+                      }
+                    ],
+                    "id": 5764,
+                    "name": "ExpressionStatement",
+                    "src": "459:25:23"
+                  }
+                ],
+                "id": 5765,
+                "name": "Block",
+                "src": "449:42:23"
+              }
+            ],
+            "id": 5766,
+            "name": "FunctionDefinition",
+            "src": "398:93:23"
+          }
+        ],
+        "id": 5767,
+        "name": "ContractDefinition",
+        "src": "210:283:23"
+      }
+    ],
+    "id": 5768,
+    "name": "SourceUnit",
+    "src": "36:458:23"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-06-29T03:41:25.887Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "allowance(address,address)": {
+        "details": "See {IERC20-allowance}."
+      },
+      "approve(address,uint256)": {
+        "details": "See {IERC20-approve}. Requirements: - `spender` cannot be the zero address."
+      },
+      "balanceOf(address)": {
+        "details": "See {IERC20-balanceOf}."
+      },
+      "decimals()": {
+        "details": "Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5,05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. This is the value {ERC20} uses, unless {_setupDecimals} is called. NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}."
+      },
+      "decreaseAllowance(address,uint256)": {
+        "details": "Atomically decreases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address. - `spender` must have allowance for the caller of at least `subtractedValue`."
+      },
+      "getRoleAdmin(bytes32)": {
+        "details": "Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}."
+      },
+      "getRoleMember(bytes32,uint256)": {
+        "details": "Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information."
+      },
+      "getRoleMemberCount(bytes32)": {
+        "details": "Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role."
+      },
+      "grantRole(bytes32,address)": {
+        "details": "Grants `role` to `account`. If `account` had not been already granted `role`, emits a {RoleGranted} event. Requirements: - the caller must have ``role``'s admin role."
+      },
+      "hasRole(bytes32,address)": {
+        "details": "Returns `true` if `account` has been granted `role`."
+      },
+      "increaseAllowance(address,uint256)": {
+        "details": "Atomically increases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address."
+      },
+      "name()": {
+        "details": "Returns the name of the token."
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "renounceRole(bytes32,address)": {
+        "details": "Revokes `role` from the calling account. Roles are often managed via {grantRole} and {revokeRole}: this function's purpose is to provide a mechanism for accounts to lose their privileges if they are compromised (such as when a trusted device is misplaced). If the calling account had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must be `account`."
+      },
+      "revokeRole(bytes32,address)": {
+        "details": "Revokes `role` from `account`. If `account` had been granted `role`, emits a {RoleRevoked} event. Requirements: - the caller must have ``role``'s admin role."
+      },
+      "symbol()": {
+        "details": "Returns the symbol of the token, usually a shorter version of the name."
+      },
+      "totalSupply()": {
+        "details": "See {IERC20-totalSupply}."
+      },
+      "transfer(address,uint256)": {
+        "details": "See {IERC20-transfer}. Requirements: - `recipient` cannot be the zero address. - the caller must have a balance of at least `amount`."
+      },
+      "transferFrom(address,address,uint256)": {
+        "details": "See {IERC20-transferFrom}. Emits an {Approval} event indicating the updated allowance. This is not required by the EIP. See the note at the beginning of {ERC20}. Requirements: - `sender` and `recipient` cannot be the zero address. - `sender` must have a balance of at least `amount`. - the caller must have allowance for ``sender``'s tokens of at least `amount`."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
