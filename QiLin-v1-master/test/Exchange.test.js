@@ -205,7 +205,7 @@ describe("Exchange Basic Test", function () {
     await this.usdt.approve(this.depot.address, openAmt, { from: alice });
     let openAmt1 = BigNumber.from('6000000000000000000000');
     await this.usdt.approve(this.depot.address, openAmt1, { from: owner });
-
+    console.log("设置当前价格1900" )
     await this.testAggregator.setState(BigNumber.from("1900"), 0, 0, {
       from: owner,
     });
@@ -217,7 +217,8 @@ describe("Exchange Basic Test", function () {
     console.log("fundTokenPrice1-1 is ", fundTokenPrice1.toString(10) );
 
     let price = (await this.testAggregator.latestAnswer()).toString(10) ;
-    console.log("price is ", price)
+    console.log("price is(设置的初始价格) ", price)
+    console.log("开仓（空仓） ")
     var res = await this.exchange.openPosition(
       deployed.data.currencyKey,
       2,
@@ -236,20 +237,23 @@ describe("Exchange Basic Test", function () {
     console.log("positon1 direction is ", positon1[5].toString(10))
     console.log("positon1 margin is ", positon1[6].toString(10))
     console.log("positon1 openRebaseLeft is ", positon1[7].toString(10))
-
+    console.log("持仓量　is ", (positon1[2]/positon1[3]*1e12).toString(10));
+    ccl=positon1[2]/positon1[3]*1e12;
     //console.log("size  is ",positon1[2]/ positon1[3])
     let totalValue1 = await  this.depot.totalValue();
     console.log("totalValue1  is ", totalValue1.toString(10))
-    await this.testAggregator.setState(BigNumber.from("2000"), 0, 0, {
+    console.log("重新设置价格2050")
+    await this.testAggregator.setState(BigNumber.from("2050"), 0, 0, {
       from: owner,
     });
     let price2 = (await this.testAggregator.latestAnswer()).toString(10) ;
-    console.log("price2 is ", price2);
+    console.log("price2 is (当前价格)", price2);
     var netValue2 = await this.depot.netValue(2);
     console.log("netValue-1  is ", netValue2.toString(10) )
+    console.log("平仓" )
     var res2 = await this.exchange.closePosition(1,{from:alice});
     var pool2 = await this.depot.liquidityPool();
-    console.log("LiquidityPool-1 fund is ", pool2.toString(10) )
+    console.log("LiquidityPool-1 fund is (当前流动池)", pool2.toString(10) )
     var netValue3 = await this.depot.netValue(2);
     console.log("netValue-1  is ", netValue3.toString(10) )
     var n1 = await this.fundToken.totalSupply();
@@ -268,12 +272,13 @@ describe("Exchange Basic Test", function () {
     let openAmt1 = BigNumber.from('6000000000000000000000');
     await this.usdt.approve(this.depot.address, openAmt1, { from: owner });
     var availableToFund = await this.fluidity.availableToFund();
-    console.log("availableToFund is ", availableToFund.toString(10) );
+    console.log("availableToFund is （原可增加金额）", availableToFund.toString(10) );
     await this.testAggregator.setState(BigNumber.from("1000"), 0, 0, {
       from: owner,
     });
     let price = (await this.testAggregator.latestAnswer()).toString(10) ;
     console.log("price is ", price)
+    console.log("开仓（空仓）杠杆10　保证金10000")
     var res = await this.exchange.openPosition(
       deployed.data.currencyKey,
       2,
@@ -282,7 +287,7 @@ describe("Exchange Basic Test", function () {
       { from: alice }
     );
     var availableToFund2 = await this.fluidity.availableToFund_test();
-    console.log("availableToFund2 is ", availableToFund2.toString(10) );
+    console.log("availableToFund_test is ", availableToFund2.toString(10) );
     var availableToFund3 = await this.fluidity.availableToFund();
     console.log("availableToFund3 is ", availableToFund3.toString(10) );
 
@@ -379,6 +384,7 @@ describe("Exchange v1-Trade Test", function () {
       await this.testAggregator.setState(BigNumber.from("1910"), 0, 0, {
         from: owner,
       });
+      console.log("仓位单1 基本信息")
       let positon1 = await this.depot.position(1);
       console.log("positon1 account is ", positon1[0].toString(10))
       console.log("positon1 share is ", positon1[1].toString(10))
