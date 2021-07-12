@@ -138,7 +138,7 @@ describe('long _test  position Basic Test', function () {
             var balancePool = await this.usdcInstance.balanceOf(poolAddress)
             expect(balanceOther.toString()).to.eq("9800000000000000000000", "balanceOther is valid");
             expect(balancePool.toString()).to.eq("10200000000000000000000", "balancePool is valid");
-            
+
             await  time.advanceBlockTo(114);//追加保证金
             var openAmount1 = BigNumber.from("200000000000000000000");//200
             await poolInstance.addMargin(1, openAmount1, { from: others });
@@ -190,6 +190,9 @@ describe('long _test  position Basic Test', function () {
             expect(positionInfo2[3].toString()).to.eq("0", "position rebase is valid");
             expect(positionInfo2[4].toString()).to.eq(others.toString(), "position owner is valid");
             expect(positionInfo2[5].toString()).to.eq("1", "position direction is valid");
+
+            var liquidity1 = await poolInstance._liquidityPool();
+            expect(liquidity1.toString()).to.eq("10000000000000000000000", "liquidity is valid");
             //平仓
             await  time.advanceBlockTo(124);//价格变动(设置价格)
             let res1 =await poolInstance.closePosition(1, { from: others });
@@ -201,10 +204,15 @@ describe('long _test  position Basic Test', function () {
            //console.log(res1.logs[1].args.serviceFee.toString())
            //console.log(res1.logs[1].args.fundingFee.toString())
            //console.log(res1.logs[1].args.pnl.toString())
+           //rebaesSize=|tlong-tshort|-(lpool*(imbalanceThreshold)/closePrice)=7.999824993*e17
+           //rebaseLong=rebase*(相对区块高度)/(_rebaseCoefficient*_totalSizeLong)=3.839947*e14
            //比较交易单的　服务费　仓管费和ｐｎｌ
            expectEvent(res1,"ClosePosition",{
+               //ClosingFee*(p.size*closePrice)=0.0015*999982499359477778*24999069897879
             serviceFee:new BN("3749794859721499097"),
+            //(p.size*(_rebaseAccumulatedLong-p.openRebase)/e18)*(closePrice/e10)=9.59934355*e17
             fundingFee:new BN("959934355110877380"),
+            //p.size*(p.openPrice-newPrice)=999982499359477778*(24999069897879-20000350018936)
             pnl:new BN("499863239814332733348"),
            })
             console.log("fourth query")
