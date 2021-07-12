@@ -88,14 +88,14 @@ describe('long _test  position Basic Test', function () {
             let a=await poolInstance.addLiquidity(liquidityAmount, { from: owner });
             expect(a.receipt.blockNumber.toString()).to.eq("100", "the blockNumber is valid (100)");
             newprice=await poolInstance.getPrice()
-            console.log("newprice is ",newprice.toString())
+            //console.log("newprice is ",newprice.toString())
             //console.log("a is ",a)
         });
 
         //开仓
         beforeEach(async function () {
             var currentBlock = await time.latestBlock()
-            console.log("currentBlock is ", currentBlock.toString())
+            //console.log("currentBlock is ", currentBlock.toString())
             // var marginAmount = BigNumber.from("10000000000000000000000");
             // await this.usdcInstance.transfer(others, marginAmount, { from: owner });
             // await this.usdcInstance.approve(poolAddress, marginAmount, { from: others });
@@ -112,6 +112,8 @@ describe('long _test  position Basic Test', function () {
             var positionInfo = await poolInstance.getPosition(1);
             expect(positionInfo[0].toString()).to.eq("20000350018936", "position openPrice is valid");
             expect(positionInfo[1].toString()).to.eq("200000000000000000000", "position margin is valid");
+            //margin=200000000000000000000;closePrice=20000350018936;lever=10
+            //size=margin*lever/closePrice
             expect(positionInfo[2].toString()).to.eq("999982499359477778", "position size is valid");
             expect(positionInfo[3].toString()).to.eq("0", "position rebase is valid");
             expect(positionInfo[4].toString()).to.eq(others.toString(), "position owner is valid");
@@ -122,7 +124,7 @@ describe('long _test  position Basic Test', function () {
             await  time.advanceBlockTo(104);//价格变动(设置价格)
             await uniPoolInstance.setPriceParam(76501, BigNumber.from("123454651815154565"));//1.0001^76501 = 2100.05228390
             nowprice_2=await poolInstance.getPrice()
-            console.log("nowprice_2 is ",nowprice_2.toString())
+            //console.log("nowprice_2 is ",nowprice_2.toString())
             expect(nowprice_2.toString()).to.eq("21000522839033", "position now_Price_2 is valid");
 
             var totalSizeLong = await poolInstance._totalSizeLong();
@@ -154,13 +156,18 @@ describe('long _test  position Basic Test', function () {
 
 
             var positionInfo1 = await poolInstance.getPosition(1);
-            console.log("second query")
+            //console.log("second query")
             expect(positionInfo1[0].toString()).to.eq("20000350018936", "position openPrice is valid");
             expect(positionInfo1[1].toString()).to.eq("400000000000000000000", "position margin is valid");
             expect(positionInfo1[2].toString()).to.eq("999982499359477778", "position size is valid");
             expect(positionInfo1[3].toString()).to.eq("0", "position rebase is valid");
             expect(positionInfo1[4].toString()).to.eq(others.toString(), "position owner is valid");
             expect(positionInfo1[5].toString()).to.eq("1", "position direction is valid");
+
+            var balanceOther = await this.usdcInstance.balanceOf(others);
+            var balancePool = await this.usdcInstance.balanceOf(poolAddress)
+            expect(balanceOther.toString()).to.eq("9600000000000000000000", "balanceOther is valid");
+            expect(balancePool.toString()).to.eq("10400000000000000000000", "balancePool is valid");
 
 
             //第三次设置价格2500
@@ -196,7 +203,7 @@ describe('long _test  position Basic Test', function () {
             //平仓
             await  time.advanceBlockTo(124);//价格变动(设置价格)
             let res1 =await poolInstance.closePosition(1, { from: others });
-            console.log("closePosition")
+            //console.log("closePosition")
            //console.log("res1 is ",res1)
            expect(res1.receipt.blockNumber.toString()).to.eq("125", "the blockNumber is valid (125)");
            //console.log(typeof res1.logs === 'object')
@@ -204,8 +211,11 @@ describe('long _test  position Basic Test', function () {
            //console.log(res1.logs[1].args.serviceFee.toString())
            //console.log(res1.logs[1].args.fundingFee.toString())
            //console.log(res1.logs[1].args.pnl.toString())
+           //tlong=_totalSizeLong=999982499359477778;tshort=0;lpool=10000000000000000000000;
+           //imbalanceThreshold=0.05;closePrice=24999069897879/e10
            //rebaesSize=|tlong-tshort|-(lpool*(imbalanceThreshold)/closePrice)=7.999824993*e17
-           //rebaseLong=rebase*(相对区块高度)/(_rebaseCoefficient*_totalSizeLong)=3.839947*e14
+           //_rebaseCoefficient = 50000;_totalSizeLong=999982499359477778
+           //rebaseLong=rebaesSize*(相对区块高度)*e18/(_rebaseCoefficient*_totalSizeLong)=3.839947*e14
            //比较交易单的　服务费　仓管费和ｐｎｌ
            expectEvent(res1,"ClosePosition",{
                //ClosingFee*(p.size*closePrice)=0.0015*999982499359477778*24999069897879
@@ -215,7 +225,8 @@ describe('long _test  position Basic Test', function () {
             //p.size*(p.openPrice-newPrice)=999982499359477778*(24999069897879-20000350018936)
             pnl:new BN("499863239814332733348"),
            })
-            console.log("fourth query")
+            //console.log("fourth query")
+            //第４次查询
             var totalSizeLong1 = await poolInstance._totalSizeLong();
             var totalSizeShort1 = await poolInstance._totalSizeShort();
             var rebaseLong1= await poolInstance._rebaseAccumulatedLong();
@@ -237,10 +248,16 @@ describe('long _test  position Basic Test', function () {
 
             var balanceOther = await this.usdcInstance.balanceOf(others);
             var balancePool = await this.usdcInstance.balanceOf(poolAddress)
+            //_balanceOther=9600000000000000000000;p.margin=400000000000000000000
+            //fee=serviceFee=3749794859721499097;fundingFee=959934355110877380
+            //balanceOther = _balanceOther+p.margin-fee-fundingFee
             expect(balanceOther.toString()).to.eq("10495153510599500356871", "balanceOther is valid");
+            //pnl=499863239814332733348
+            //balancePool= liquidityPool=_liquidityPool+fee+fundingFee-pnl
             expect(balancePool.toString()).to.eq("9504846489400499643129", "balancePool is valid");
 
             var liquidity = await poolInstance._liquidityPool();
+            //
             expect(liquidity.toString()).to.eq("9504846489400499643129", "liquidity is valid");
 
         });
